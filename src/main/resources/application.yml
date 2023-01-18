@@ -1,0 +1,10 @@
+server:
+  port: 9091
+
+spring:
+  application:
+    name: Auth
+  main:
+    allow-bean-definition-overriding: true
+  data.mongodb.uri: mongodb+srv://chami:chami@cluster0.82inl5q.mongodb.net/auth
+  data.mongodb.database: auth
