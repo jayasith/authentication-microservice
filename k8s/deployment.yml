@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: authentication-microservice
+spec:
+  selector:
+    matchLabels:
+      app: authentication-microservice
+  template:
+    metadata:
+      labels:
+        app: authentication-microservice
+    spec:
+      containers:
+        - name: authentication-service
+          image: jayasith98/authentication-microservice
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 9090
