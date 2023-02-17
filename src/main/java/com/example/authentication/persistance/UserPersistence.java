@@ -3,6 +3,7 @@ package com.example.authentication.persistance;
 import com.example.authentication.persistance.entity.User;
 import com.example.authentication.persistance.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +27,7 @@ public class UserPersistence {
     }
 
     public User getUserByUsername(String username){
-        return userRepository.findByUsername(username);
+        return userRepository.findByUsername(username)
+                .orElseThrow(()-> new UsernameNotFoundException("fail to find user "+ username));
     }
 }

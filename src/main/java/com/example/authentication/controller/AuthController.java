@@ -2,8 +2,8 @@ package com.example.authentication.controller;
 
 import com.example.authentication.controller.request.LoginRequest;
 import com.example.authentication.controller.request.SignUpRequest;
+import com.example.authentication.controller.response.SignupResponse;
 import com.example.authentication.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,18 +18,20 @@ public class AuthController {
 
     @PostMapping("/login")
     @ResponseStatus(HttpStatus.OK)
-    public String login(@RequestBody LoginRequest loginRequest){
-       boolean result =  userService.userLogin(loginRequest);
-       if(result){
-           return "login successful";
-       }else{
-           return "login fail";
-       }
+    public SignupResponse login(@RequestBody LoginRequest loginRequest) {
+        String token = userService.userLogin(loginRequest);
+        return SignupResponse.builder()
+                .token(token)
+                .build();
     }
 
     @PostMapping("/signup")
     @ResponseStatus(HttpStatus.OK)
-    public void signup(@RequestBody SignUpRequest signUpRequest){
-        userService.userSignUp(signUpRequest);
+    public SignupResponse signup(@RequestBody SignUpRequest signUpRequest) {
+        String token = userService.userSignUp(signUpRequest);
+        return SignupResponse.builder()
+                .token(token)
+                .build();
     }
+
 }
