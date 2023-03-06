@@ -8,5 +8,5 @@ import org.springframework.web.bind.annotation.RequestBody;
 @FeignClient("amqp")
 public interface NotificationFeign {
     @PostMapping(path = "/api/v1.0/amqp/producer")
-    void pushNotification(AmqpRequest request);
+    void pushNotification(String request);
 }

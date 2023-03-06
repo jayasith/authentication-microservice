@@ -1,5 +1,5 @@
 server:
-  port: 9092
+  port: 9099
 
 spring:
   datasource:
@@ -19,6 +19,7 @@ spring:
 
   rabbitmq:
     addresses: localhost:5672
+
 
 eureka:
   client:

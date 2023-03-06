@@ -59,14 +59,8 @@ public class UserService {
                 .build();
 
         userPersistence.saveUser(user);
-
+        notificationFeign.pushNotification("welcome");
         return jwtService.generateToken(user);
-
-//        notificationFeign.pushNotification(AmqpRequest.builder()
-//                .exchange(exchange)
-//                .routingKey(routingKey)
-//                .payload("new notification")
-//                .build());
     }
 
 
